@@ -1,0 +1,30 @@
+<h1>Create Game</h1>
+
+<form [formGroup]="form">
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td>
+        <input type="text" size="30" formControlName="userName">
+      </td>
+    </tr>
+    <tr>
+      <td>Room name:</td>
+      <td>
+        <input type="text" size="30" formControlName="roomName">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div class="space-between">
+          <button type="button" (click)="createRoom()" [disabled]="form.invalid">
+            Create
+          </button>
+          <button type="button" (click)="joinRoom()" [disabled]="form.invalid">
+            Join
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>
