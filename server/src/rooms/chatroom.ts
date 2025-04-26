@@ -1,25 +1,41 @@
 import {Client, Room} from "colyseus";
-import {ChatRoomData} from "src/schema";
+import {ChatRoomData, ChatText} from "src/schema";
+import {ulid} from "ulid";
 
 export class ChatRoom extends Room<ChatRoomData> {
 
   state = new ChatRoomData()
+  //state: ChatRoomData = new ChatRoomData()
 
   onCreate(options: any): void | Promise<any> {
     console.info('>>> on create:', options)
+    this.state.roomId = this.roomId
+    this.state.roomName = options['roomName'] ?? ulid()
+    this.state.historySize = 0
+
     this.onMessage("chat", (client, message) => {
-      console.info(`Message from ${client.userData['userName']}: `, message)
-      this.state.messages.push({ ...message, timestamp: Date.now() })
+      const ct = new ChatText()
+      ct.assign({
+        timestamp: Date.now(),
+        userName: client.userData.userName,
+        message: message.text
+      })
+      this.state.messages.push(ct)
     })
   }
 
   onJoin(client: Client<any, any>, options?: any, auth?: any): void | Promise<any> {
-    console.info('>>> on join:', options)
     client.userData = { userName: options['userName'] }
-    this.state.roomId = this.roomId
-    this.state.roomName = options['roomName']
     this.state.userNames.push(options['userName'])
-    this.state.historySize = 0
-    console.info('>>> exiting...')
   }
+
+  onDispose(): void | Promise<any> {
+    console.info('>>> removing room: ', this.state.roomName)
+  }
+
+  onUncaughtException(error: Error, method: string) {
+    console.error('>>> method: ', method)
+    console.error('>>> error: ', error)
+  }
+
 }
