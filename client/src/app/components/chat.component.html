@@ -1,1 +1,36 @@
-<p>chat works!</p>
+<div class="chat-container">
+
+  <div class="chat-header">
+    <h1>Room: <code>{{ roomId }}</code></h1>
+  </div>
+
+  <div class="back-button">
+    <button type="button" class="full" (click)="leave()">Leave</button>
+  </div>
+
+  <div class="chat-display border">
+    <h2>Chat</h2>
+    @for (chat of chatStore.messages$ | async; track chat.timestamp) {
+      <div class="message">
+        <div> {{ chat.timestamp | date }} <code>{{ chat.userName }}</code></div>
+        <p>{{ chat.message }}</p>
+      </div>
+    }
+  </div>
+
+  <div class="chat-users border">
+    <h3>Friends</h3>
+    @for (username of chatStore.userNames$ | async; track username) {
+      <div><code>{{ username }}</code></div>
+    }
+  </div>
+
+  <div class="chat-message">
+    <input type="text" class="full">
+  </div>
+
+  <div class="chat-button">
+    <button type="button" class="full">Send</button>
+  </div>
+
+</div>

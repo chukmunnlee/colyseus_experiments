@@ -1,0 +1,80 @@
+.message {
+  margin: 5px;
+}
+.message:hover {
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: lightgrey;
+}
+
+.border {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.chat-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-row-gap: 1vh;
+  grid-column-gap: 1vw;
+}
+
+.chat-header {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: 1;
+  grid-column-end: 9;
+}
+
+.back-button {
+  grid-row-start: 1;
+  grid-column-start: 8;
+  grid-row-end: 2;
+  grid-column-end: 8;
+  align-self: center;
+}
+
+.chat-display {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-row-end: 10;
+  grid-column-end: 8;
+}
+
+.chat-users {
+  grid-row-start: 2;
+  grid-column-start: 8;
+  grid-row-end: 10;
+  grid-column-end: 8;
+}
+
+.chat-message {
+  grid-row-start: 10;
+  grid-column-start: 1;
+  grid-row-end: 10;
+  grid-column-end: 8;
+}
+.chat-button {
+  grid-row-start: 10;
+  grid-column-start: 8;
+  grid-row-end: 10;
+  grid-column-end: 8;
+}
+
+.full {
+  width: 99%;
+}
+
+input {
+  border-radius: 5px;
+}
+input:focus {
+  background-color: lightblue;
+}
+
+button:hover {
+  background-color: pink;
+}
+

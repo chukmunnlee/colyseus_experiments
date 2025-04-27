@@ -7,13 +7,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 
 import { MainComponent } from './components/main.component';
-import {GameService} from './services/game.service';
+import {ChatService} from './services/chat.service';
 import {ChatRoomStore} from './services/chat.store';
 import { ChatComponent } from './components/chat.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat/:roomId', component: ChatComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 
@@ -25,7 +25,7 @@ const routes: Routes = [
     BrowserModule, ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ provideHttpClient(), GameService, ChatRoomStore ],
+  providers: [ provideHttpClient(), ChatService, ChatRoomStore ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

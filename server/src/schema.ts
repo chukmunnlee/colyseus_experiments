@@ -15,4 +15,22 @@ export class ChatRoomData extends Schema {
   @type([ "string" ]) userNames: ArraySchema<string>  = new ArraySchema<string>()
   @type([ ChatText ]) messages: ArraySchema<ChatText> = new ArraySchema<ChatText>()
 
+  addUser(userName: string) {
+    this.userNames = new ArraySchema<string>(...this.userNames, userName)
+  }
+  removeUser(userName: string) {
+    const filtered: string[] = this.userNames.filter(ct => userName != ct)
+    this.userNames = new ArraySchema<string>(...filtered)
+  }
+
+  newMessage(userName: string, message: string) {
+    const ct = new ChatText()
+    ct.assign({
+      timestamp: Date.now(),
+      userName: userName,
+      message: message
+    })
+    this.messages.unshift(ct)
+  }
+
 }

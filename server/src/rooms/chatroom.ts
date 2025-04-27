@@ -14,19 +14,23 @@ export class ChatRoom extends Room<ChatRoomData> {
     this.state.historySize = 0
 
     this.onMessage("chat", (client, message) => {
-      const ct = new ChatText()
-      ct.assign({
-        timestamp: Date.now(),
-        userName: client.userData.userName,
-        message: message.text
-      })
-      this.state.messages.push(ct)
+      this.state.newMessage(client.userData.userName, message.text)
     })
   }
 
   onJoin(client: Client<any, any>, options?: any, auth?: any): void | Promise<any> {
-    client.userData = { userName: options['userName'] }
-    this.state.userNames.push(options['userName'])
+    let { userName } = options
+    client.userData = { userName }
+    console.info(`JOINED: ${userName} joined ${this.roomId}`)
+    this.state.addUser(userName)
+    this.state.newMessage(client.userData.userName, `${userName} joined the conversation`)
+  }
+
+  onLeave(client: Client<any, any>, consented?: boolean): void | Promise<any> {
+    let userName = client.userData['userName']
+    console.info(`LEFT: ${userName} joined ${this.roomId}`)
+    this.state.removeUser(userName)
+    this.state.newMessage(client.userData.userName, `${userName} left the conversation`)
   }
 
   onDispose(): void | Promise<any> {

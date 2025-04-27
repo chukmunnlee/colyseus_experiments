@@ -8,6 +8,7 @@ export interface ChatTextSlice {
   userName: string
   message: string
 }
+
 export interface ChatRoomSlice {
   roomId: string
   roomName: string
