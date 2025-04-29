@@ -23,7 +23,7 @@
     "@colyseus/monitor": "^0.16.7",
     "@colyseus/playground": "^0.16.4",
     "@colyseus/schema": "^3.0.35",
-    "@colyseus/tools": "^0.16.4",
+    "@colyseus/tools": "^0.16.5",
     "@colyseus/ws-transport": "^0.16.5",
     "@nestjs/common": "^11.1.0",
     "@nestjs/core": "^11.1.0",
@@ -47,7 +47,7 @@
     "@swc/core": "^1.11.22",
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.15.2",
+    "@types/node": "^22.15.3",
     "@types/supertest": "^6.0.3",
     "@types/uuid": "^10.0.0",
     "eslint": "^9.25.1",
@@ -63,7 +63,7 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.31.1"
   },
   "jest": {
     "moduleFileExtensions": [
