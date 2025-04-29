@@ -3,6 +3,8 @@ import { ChatRoomStore } from '../services/chat.store'
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {ChatService} from '../services/chat.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Message} from '../models';
 
 @Component({
   selector: 'app-chat',
@@ -14,8 +16,9 @@ export class ChatComponent implements OnInit {
 
   private title = inject(Title)
   private activatedRoute = inject(ActivatedRoute)
-  private chatService = inject(ChatService)
   private router = inject(Router)
+
+  protected chatSvc = inject(ChatService)
   protected chatStore = inject(ChatRoomStore)
 
   protected roomId!: string
@@ -26,8 +29,15 @@ export class ChatComponent implements OnInit {
   }
 
   leave() {
-    this.chatService.disconnect()
+    this.chatSvc.disconnect()
     this.router.navigate(['/'])
+  }
+
+  send(chatText: any) {
+    if (!chatText.value)
+      return
+    this.chatSvc.send(chatText.value)
+    chatText.value = ''
   }
 
 }

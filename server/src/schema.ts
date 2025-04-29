@@ -30,7 +30,7 @@ export class ChatRoomData extends Schema {
       userName: userName,
       message: message
     })
-    this.messages.unshift(ct)
+    this.messages = new ArraySchema<ChatText>(ct, ...this.messages)
   }
 
 }

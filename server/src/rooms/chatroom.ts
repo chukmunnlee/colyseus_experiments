@@ -14,7 +14,8 @@ export class ChatRoom extends Room<ChatRoomData> {
     this.state.historySize = 0
 
     this.onMessage("chat", (client, message) => {
-      this.state.newMessage(client.userData.userName, message.text)
+      console.info('>>> message: ', message)
+      this.state.newMessage(client.userData.userName, message)
     })
   }
 

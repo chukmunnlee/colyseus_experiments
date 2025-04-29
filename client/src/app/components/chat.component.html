@@ -1,7 +1,7 @@
 <div class="chat-container">
 
   <div class="chat-header">
-    <h1>Room: <code>{{ roomId }}</code></h1>
+    <h1>Room: <code>{{ roomId }}</code>, Username: {{ chatSvc.userName }}</h1>
   </div>
 
   <div class="back-button">
@@ -26,11 +26,13 @@
   </div>
 
   <div class="chat-message">
-    <input type="text" class="full">
+      <input type="text" class="full" #chattext>
   </div>
 
   <div class="chat-button">
-    <button type="button" class="full">Send</button>
+    <button type="button" class="full" (click)="send(chattext)">
+      Send
+    </button>
   </div>
 
 </div>

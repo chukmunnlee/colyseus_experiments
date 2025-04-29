@@ -16,3 +16,7 @@ export interface ChatRoomSlice {
   userNames: string[]
   messages: ChatTextSlice[]
 }
+
+export interface Message {
+  text: string
+}
