@@ -15,6 +15,10 @@ run/main_scene="uid://cqetdfovdhup5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scripts/GameManager.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_colyseus/plugin.cfg")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqetdfovdhup5"]
 
-[ext_resource type="Script" uid="uid://bbx5xhkackocl" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bbx5xhkackocl" path="res://scripts/Main.gd" id="1_elqb8"]
 
 [sub_resource type="Theme" id="Theme_sgp6g"]
 
@@ -14,7 +14,7 @@ offset_right = -379.0
 offset_bottom = -444.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_o5qli")
+script = ExtResource("1_elqb8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -23,11 +23,19 @@ anchor_right = 1.0
 offset_bottom = 31.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/header"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.901961, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Colyseus Chat"
+
+[node name="status" type="Label" parent="VBoxContainer/header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.901961, 0.972549, 1)
+text = "(not connected)"
 
 [node name="username" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -39,6 +47,7 @@ text = "Name: "
 [node name="usernameCtrl" type="LineEdit" parent="VBoxContainer/username"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "fred"
 max_length = 16
 
 [node name="room" type="HBoxContainer" parent="VBoxContainer"]
@@ -51,6 +60,7 @@ text = "Room name or Id: "
 [node name="roomCtrl" type="LineEdit" parent="VBoxContainer/room"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "abc123"
 max_length = 16
 
 [node name="buttons" type="HBoxContainer" parent="VBoxContainer"]
