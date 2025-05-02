@@ -7,9 +7,9 @@ var _client: colyseus.Client
 class ChatText extends colyseus.Schema:
 	static func define_fields():
 		return [
-			colyseus.Field.new("timestamp", colyseus.NUMBER),
-			colyseus.Field.new("userName", colyseus.STRING),
-			colyseus.Field.new("message", colyseus.STRING)
+			colyseus.Field.new("timestamp", colyseus.NUMBER, 0),
+			colyseus.Field.new("userName", colyseus.STRING, ""),
+			colyseus.Field.new("message", colyseus.STRING, "")
 		]
 	func _to_string():
 		return "ChatText(timestamp=%d, userName=%s, message=%s)" \
@@ -18,11 +18,11 @@ class ChatText extends colyseus.Schema:
 class ChatRoomData extends colyseus.Schema:
 	static func define_fields():
 		return [
-			colyseus.Field.new("roomId", colyseus.STRING),
-			colyseus.Field.new("roomName", colyseus.STRING),
-			colyseus.Field.new("historySize", colyseus.NUMBER),
+			colyseus.Field.new("roomId", colyseus.STRING, ""),
+			colyseus.Field.new("roomName", colyseus.STRING, ""),
+			colyseus.Field.new("historySize", colyseus.NUMBER, 0),
 			colyseus.Field.new("userNames", colyseus.ARRAY, colyseus.STRING),
-			colyseus.Field.new("messages", colyseus.ARRAY, ChatText)
+			#colyseus.Field.new("messages", colyseus.ARRAY, ChatText)
 		]
 		
 	func _to_string():
